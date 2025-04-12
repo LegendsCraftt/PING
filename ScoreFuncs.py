@@ -1,6 +1,10 @@
 import os
 import sys
 
+import pygame
+
+pygame.mixer.init()
+
 def get_save_path(filename):
     if getattr(sys, 'frozen', False):
         # Running from .exe — save next to the .exe
@@ -35,3 +39,10 @@ def resource_path(relative_path):
     except AttributeError:
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
+
+
+
+# --SOUNDS--
+paddle_bounce = pygame.mixer.Sound(r'assets\sounds\BOUNCE.wav')
+def bounce_sound():
+    paddle_bounce.play()
